@@ -35,5 +35,19 @@ namespace LessonMonitor.API.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet("model")]
+        public IEnumerable<string> GetWeatherForeCastModel()
+        {
+            var wetherForecastModel = typeof(WeatherForecast);
+
+            var properties = wetherForecastModel.GetMethods();
+            var result = new List<string>();
+            foreach (var prop in properties)
+            {
+                result.Add(prop.ToString());
+            }
+            return result;
+        }
     }
 }
